@@ -10,11 +10,11 @@ export class CampoColoridoDirective {
 
   constructor() {}
 
-  @HostListener('focus') ganharFoco() {
+  @HostListener('focus') colorir() {
     this.corDeFundo = this.cor;
   }
 
-  @HostListener('blur') perderFoco() {
+  @HostListener('blur') descolorir() {
     this.cor = 'transparent';
   }
 
