@@ -10,7 +10,10 @@
 
     <div class="ui-g-6 ui-md-3 ui-fluid">
       <label>Vencimento</label>
-      <input pInputText type="text">
+      <input pInputText type="text" name="vencimento" ngModel #vencimento="ngModel" required>
+
+      <app-message [control]="vencimento" error="required"
+          text="Informe um vencimento."></app-message>
     </div>
     <div class="ui-g-6 ui-md-3 ui-fluid">
       <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
@@ -21,29 +24,38 @@
         <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="10">
         
         <app-message [control]="descricao" error="required"
-          text="Informe uma descrição"></app-message>
+          text="Informe uma descrição."></app-message>
 
           <app-message [control]="descricao" error="minlength"
-          text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
+          text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres."></app-message>
         
     </div>
     <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Valor</label>
-        <input pInputText type="text" name="valor" ngModel #valor="ngModel"
+        <input pInputText type="text" name="valor" ngModel #valor="ngModel" required
           currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }"
           placeholder="0,00">
+
+        <app-message [control]="valor" error="required"
+          text="Informe um valor."></app-message>
     </div>
 
     <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias" placeholder="Selecione"
+        <p-dropdown [options]="categorias" placeholder="Selecione" name="categoria" ngModel #pessoa="ngModel"
           [autoWidth]="false"></p-dropdown>
+
+        <app-message [control]="categoria" error="required"
+          text="Informe uma categoria."></app-message>
     </div>
 
     <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Pessoas</label>
-        <p-dropdown [options]="pessoas" placeholder="Selecione"
+        <p-dropdown [options]="pessoas" placeholder="Selecione" name="pessoa" ngModel #categoria="ngModel"
           [autoWidth]="false" filter="true"></p-dropdown>
+
+        <app-message [control]="pessoa" error="required"
+          text="Informe uma pessoa."></app-message>
     </div>    
     
     <div class="ui-g-12 ui-fluid">
