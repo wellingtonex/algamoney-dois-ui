@@ -5,12 +5,14 @@ import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 import {ButtonModule} from 'primeng/components/button/button';
 import {DataTableModule} from 'primeng/components/datatable/datatable';
 import {TooltipModule} from 'primeng/components/tooltip/tooltip';
+import {InputTextarea, InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
 
 import { AppComponent } from './app.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { CampoColoridoDirective } from './diretivas/campo-colorido.directive';
+import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 
 
 @NgModule({
@@ -19,14 +21,16 @@ import { CampoColoridoDirective } from './diretivas/campo-colorido.directive';
     LancamentosPesquisaComponent,
     NavbarComponent,
     PessoasPesquisaComponent,
-    CampoColoridoDirective
+    CampoColoridoDirective,
+    LancamentoCadastroComponent
   ],
   imports: [
     BrowserModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
-    TooltipModule
+    TooltipModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
