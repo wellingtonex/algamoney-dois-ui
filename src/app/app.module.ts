@@ -5,7 +5,8 @@ import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 import {ButtonModule} from 'primeng/components/button/button';
 import {DataTableModule} from 'primeng/components/datatable/datatable';
 import {TooltipModule} from 'primeng/components/tooltip/tooltip';
-import {InputTextarea, InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
+import {InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
+import {SelectButtonModule} from 'primeng/components/selectbutton/selectbutton';
 
 import { AppComponent } from './app.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
@@ -30,7 +31,8 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     ButtonModule,
     DataTableModule,
     TooltipModule,
-    InputTextareaModule
+    InputTextareaModule,
+    SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
