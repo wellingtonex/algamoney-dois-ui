@@ -22,6 +22,7 @@ import { CampoColoridoDirective } from './diretivas/campo-colorido.directive';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { MessageComponent } from './message/message.component';
+import { LancamentoPesquisaGridComponent } from './lancamento-pesquisa-grid/lancamento-pesquisa-grid.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MessageComponent } from './message/message.component';
     CampoColoridoDirective,
     LancamentoCadastroComponent,
     PessoasCadastroComponent,
-    MessageComponent
+    MessageComponent,
+    LancamentoPesquisaGridComponent
   ],
   imports: [
     BrowserModule,
