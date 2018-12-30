@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
@@ -7,6 +8,9 @@ import {DataTableModule} from 'primeng/components/datatable/datatable';
 import {TooltipModule} from 'primeng/components/tooltip/tooltip';
 import {InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
 import {SelectButtonModule} from 'primeng/components/selectbutton/selectbutton';
+import {DropdownModule} from 'primeng/components/dropdown/dropdown';
+
+
 
 import { AppComponent } from './app.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
@@ -27,12 +31,14 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
     TooltipModule,
     InputTextareaModule,
-    SelectButtonModule
+    SelectButtonModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

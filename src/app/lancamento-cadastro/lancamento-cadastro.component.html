@@ -24,14 +24,19 @@
         <label>Valor</label>
         <input pInputText type="text" placeholder="0,00">
     </div>
-    <div class="ui-g-6 ui-fluid">
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Categoria</label>
-        <input pInputText type="text" placeholder="0,00">
+        <p-dropdown [options]="categorias" placeholder="Selecione"
+          [autoWidth]="false"></p-dropdown>
     </div>
-    <div class="ui-g-6 ui-fluid">
-        <label>Pessoa</label>
-        <input pInputText type="text" placeholder="0,00">
-    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Pessoas</label>
+        <p-dropdown [options]="pessoas" placeholder="Selecione"
+          [autoWidth]="false" filter="true"></p-dropdown>
+    </div>    
+    
     <div class="ui-g-12 ui-fluid">
         <label>Observação</label>
         <textarea rows="3" pInputTextarea></textarea>
