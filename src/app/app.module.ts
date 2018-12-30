@@ -9,6 +9,7 @@ import {TooltipModule} from 'primeng/components/tooltip/tooltip';
 import {InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
 import {SelectButtonModule} from 'primeng/components/selectbutton/selectbutton';
 import {DropdownModule} from 'primeng/components/dropdown/dropdown';
+import {InputMaskModule} from 'primeng/primeng';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
@@ -41,7 +42,8 @@ import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.co
     InputTextareaModule,
     SelectButtonModule,
     DropdownModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    InputMaskModule
 
   ],
   providers: [],
