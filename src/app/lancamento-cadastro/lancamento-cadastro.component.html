@@ -19,12 +19,13 @@
     <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
         <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="10">
-        <div *ngIf="descricao.hasError('required') && descricao.dirty" class="ui-message ui-messages-error">
-          Informe uma descrição
-        </div>
-        <div *ngIf="descricao.hasError('minlength') && descricao.dirty" class="ui-message ui-messages-error">
-          Minimo de {{descricao.errors.minlength.requiredLength}} caracteres você digitou apenas {{descricao.errors.minlength.actualLength}}
-        </div>
+        
+        <app-message [control]="descricao" error="required"
+          text="Informe uma descrição"></app-message>
+
+          <app-message [control]="descricao" error="minlength"
+          text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
+        
     </div>
     <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Valor</label>
