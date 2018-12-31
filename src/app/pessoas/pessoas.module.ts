@@ -16,13 +16,15 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { PessoaPesquisaGridComponent } from './pessoa-pesquisa-grid/pessoa-pesquisa-grid.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-
     BrowserAnimationsModule,
     FormsModule,
+
+    SharedModule,
 
     InputTextModule,
     ButtonModule,

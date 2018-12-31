@@ -15,6 +15,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LancamentoPesquisaGridComponent } from './lancamento-pesquisa-grid/lancamento-pesquisa-grid.component';
+import { SharedModule } from 'app/shared/shared.module';
+
 
 @NgModule({
   imports: [
@@ -30,6 +32,8 @@ import { LancamentoPesquisaGridComponent } from './lancamento-pesquisa-grid/lanc
     SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,
+
+    SharedModule
   ],
   declarations: [
     LancamentoCadastroComponent,
