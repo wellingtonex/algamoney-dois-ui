@@ -15,30 +15,30 @@ import {InputMaskModule} from 'primeng/primeng';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import { AppComponent } from './app.component';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { CampoColoridoDirective } from './diretivas/campo-colorido.directive';
-import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { MessageComponent } from './message/message.component';
-import { LancamentoPesquisaGridComponent } from './lancamento-pesquisa-grid/lancamento-pesquisa-grid.component';
+import { LacamentosModule } from './lacamentos/lacamentos.module';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LancamentosPesquisaComponent,
     NavbarComponent,
     PessoasPesquisaComponent,
     CampoColoridoDirective,
-    LancamentoCadastroComponent,
     PessoasCadastroComponent,
-    MessageComponent,
-    LancamentoPesquisaGridComponent
+    MessageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    
     InputTextModule,
     ButtonModule,
     DataTableModule,
@@ -48,7 +48,9 @@ import { LancamentoPesquisaGridComponent } from './lancamento-pesquisa-grid/lanc
     DropdownModule,
     CurrencyMaskModule,
     InputMaskModule,
-    FormsModule
+    FormsModule,
+
+    LacamentosModule
 
   ],
   providers: [],
