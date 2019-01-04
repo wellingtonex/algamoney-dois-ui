@@ -13,7 +13,6 @@ import {DropdownModule} from 'primeng/components/dropdown/dropdown';
 import {InputMaskModule} from 'primeng/primeng';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
-import { PessoaPesquisaGridComponent } from './pessoa-pesquisa-grid/pessoa-pesquisa-grid.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { SharedModule } from 'app/shared/shared.module';
@@ -37,8 +36,7 @@ import { SharedModule } from 'app/shared/shared.module';
   ],
   declarations: [
     PessoasPesquisaComponent,
-    PessoasCadastroComponent,
-    PessoaPesquisaGridComponent
+    PessoasCadastroComponent
   ],
   exports: [
     PessoasPesquisaComponent,
