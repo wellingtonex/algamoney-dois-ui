@@ -1,30 +1,56 @@
 <div class="container">
   <div class="ui-g">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="ui-g-12">
+        <h1>Lançamentos</h1>
+      </div>
 
-    <div class="ui-g-12">
-      <h1>Lançamentos</h1>
-    </div>
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao" [(ngModel)]="descricao" appCampoColorido cor='yellow'>
+      </div>
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Descrição</label>
-      <input pInputText type="text" appCampoColorido cor='yellow'>
-    </div>
+      <div class="ui-g-12">
+        <label style="display: block">Vencimento</label>
+        <input pInputText type="text" style="width: 95px">
 
-    <div class="ui-g-12">
-      <label style="display: block">Vencimento</label>
-      <input pInputText type="text" style="width: 95px">
+        <label>até</label>
+        <input pInputText type="text" style="width: 95px">
+      </div>
 
-      <label>até</label>
-      <input pInputText type="text" style="width: 95px">
-    </div>
-
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>  
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <app-lancamento-pesquisa-grid [lancamentos]="lancamentos"></app-lancamento-pesquisa-grid>
+        <p-dataTable [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
+          <p-column field="pessoa" header="Pessoa"></p-column>
+          <p-column field="descricao" header="Descrição"></p-column>
+          <p-column field="dataVencimento" styleClass="col-data" header="Vencimento">
+            <ng-template let-lanc="rowData" pTemplate="body">              
+              <span>{{lanc.dataVencimento | date:'dd/MM/y'}}</span>
+            </ng-template>
+          </p-column>
+          <p-column field="dataPagamento" styleClass="col-data" header="Pagamento">
+            <ng-template let-lanc="rowData" pTemplate="body">              
+              <span>{{lanc.dataPagamento | date:'dd/MM/y'}}</span>
+            </ng-template>
+          </p-column>
+          <p-column field="valor" styleClass="col-valor" header="Valor">
+            <ng-template let-lanc="rowData" pTemplate="body">
+              <!--span [ngStyle]="{color: lanc.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lanc.valor}}</span-->
+              <span [style.color]="lanc.tipo === 'DESPESA' ? 'red' : 'blue'">{{lanc.valor | currency:'BRL':true}}</span>
+            </ng-template>
+          </p-column>
+          <p-column styleClass="col-acoes">
+            <ng-template pTemplate="body">
+              <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="bottom"></a>
+              <button pButton icon="fa-trash" pTooltip="Excluir" tooltipPosition="bottom"></button>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
       </div>
 
       <div class="ui-g-12">
