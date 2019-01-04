@@ -32,4 +32,9 @@ export class LancamentosPesquisaComponent implements OnInit {
     const pagina = event.first/event.rows;
     this.pesquisar(pagina);
   }
+
+  handleRowSelect(event: any) {
+    // simply logging the event
+    console.log('row unselect : ', event);
+  }
 }

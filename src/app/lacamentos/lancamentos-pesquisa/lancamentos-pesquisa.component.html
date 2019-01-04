@@ -27,10 +27,11 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <p-dataTable [value]="lancamentos"  [responsive]="true"
-        emptyMessage="Nenhum lançamento encontrado" 
+        <p-dataTable #dt [value]="lancamentos"  [responsive]="true" [loading]="loading" loadingIcon="fa-spinner"
+        emptyMessage="Nenhum lançamento encontrado" [reorderableColumns]="true"
         [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
-        (onLazyLoad)="aoMudarPagina($event)">
+        (onLazyLoad)="aoMudarPagina($event)" selectionMode="single" (onRowClick)="handleRowSelect($event)">
+
           <p-column field="pessoa" header="Pessoa"></p-column>
           <p-column field="descricao" header="Descrição"></p-column>
           <p-column field="dataVencimento" styleClass="col-data" header="Vencimento">
@@ -60,6 +61,7 @@
 
       <div class="ui-g-12">
         <a pButton label="Novo Lançamento"></a>
+        <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()"></button>              
       </div>
 
     </div>
