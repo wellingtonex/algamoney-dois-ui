@@ -7,17 +7,17 @@
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" name="descricao" [(ngModel)]="descricao" appCampoColorido cor='yellow'>
+        <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao" appCampoColorido cor='yellow'>
       </div>
 
       <div class="ui-g-12">
         <label style="display: block">Vencimento</label>
         <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
-          name="vencimentoInicio" [(ngModel)]="dataVencimentoInicio"></p-calendar>
+          name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
 
         <label>até</label>
         <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
-          name="vencimentoFim" [(ngModel)]="dataVencimentoFim"></p-calendar>
+          name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
       </div>
 
       <div class="ui-g-12">
@@ -27,8 +27,10 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <p-dataTable [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true"
-        emptyMessage="Nenhum lançamento encontrado">
+        <p-dataTable [value]="lancamentos"  [responsive]="true"
+        emptyMessage="Nenhum lançamento encontrado" 
+        [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros"
+        (onLazyLoad)="aoMudarPagina($event)">
           <p-column field="pessoa" header="Pessoa"></p-column>
           <p-column field="descricao" header="Descrição"></p-column>
           <p-column field="dataVencimento" styleClass="col-data" header="Vencimento">
