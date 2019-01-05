@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { LacamentosModule } from './lacamentos/lacamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentoService } from './lacamentos/lancamento.service';
+import { ToastyModule } from 'ng2-toasty';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,8 @@ import { LancamentoService } from './lacamentos/lancamento.service';
     BrowserModule,
     CoreModule,
     HttpModule,
+
+    ToastyModule.forRoot(),
 
     LacamentosModule,
     PessoasModule
