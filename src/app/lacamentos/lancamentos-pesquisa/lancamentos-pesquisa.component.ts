@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoService, LacamentoFiltro } from '../lancamento.service';
 import { LazyLoadEvent } from 'primeng/components/common/api';
 
@@ -12,6 +12,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [];
   filtro = new LacamentoFiltro();
   totalRegistros = 0;
+  @ViewChild('tabela') grid;
 
   constructor(private lancamentoService: LancamentoService) { }
 
@@ -31,5 +32,13 @@ export class LancamentosPesquisaComponent implements OnInit {
     console.log(event);
     const pagina = event.first/event.rows;
     this.pesquisar(pagina);
+  }
+
+  excluir(lancamento: any) {
+    this.lancamentoService.excluir(lancamento.codigo)
+      .then(() => {
+        this.grid.first = 0;   
+      });
+    
   }
 }
