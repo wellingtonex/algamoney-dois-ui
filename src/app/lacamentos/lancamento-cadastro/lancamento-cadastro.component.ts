@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'app/categorias/categoria.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
 import { PessoaService } from 'app/pessoas/pessoa.service';
+import { Lancamento } from 'app/core/model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -16,8 +18,9 @@ export class LancamentoCadastroComponent implements OnInit {
   ];
 
   categorias = [];
-
   pessoas = [];
+  lancamento = new Lancamento();
+
 
   constructor(
     private categoriaService: CategoriaService,
@@ -39,5 +42,10 @@ export class LancamentoCadastroComponent implements OnInit {
     this.pessoaService.listarTodas()
       .then(pessoas => this.pessoas = pessoas.map(p => ({label:p.nome, value:p.codigo})))
       .catch(error => this.errorHandlerService.handle(error));
+  }
+
+  salvar(formControl: FormControl) {
+    console.log(this.lancamento);
+
   }
 }

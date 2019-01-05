@@ -1,40 +1,49 @@
 <div class="container">
-  <form >
+  <form #f="ngForm" (ngSubmit)="salvar(f)">
     <div class="ui-g">
-      <h1>Novo Lancamento</h1>      
+      <h1>Novo Lancamento</h1>
     </div>
 
     <div class="ui-g-12">
-      <p-selectButton [options]="tipos" #tipo></p-selectButton>
+        <p-selectButton name="tipo" [options]="tipos"
+        [(ngModel)]="lancamento.tipo"
+        #tipo></p-selectButton>
     </div>
 
     <div class="ui-g-6 ui-md-3 ui-fluid">
       <label>Vencimento</label>
-      <input pInputText type="text" name="vencimento" ngModel #vencimento="ngModel" required>
+      <p-calendar name="vencimento" dateFormat="dd/mm/yy"
+      [inline]="false" [readonlyInput]="false" [showIcon]="false"
+      [(ngModel)]="lancamento.dataVencimento"
+      #vencimento="ngModel" required></p-calendar>
 
       <app-message [control]="vencimento" error="required"
           text="Informe um vencimento."></app-message>
     </div>
     <div class="ui-g-6 ui-md-3 ui-fluid">
       <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
-      <input pInputText type="text">
-    </div>    
+      <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
+          [(ngModel)]="lancamento.dataPagamento"></p-calendar>
+    </div>
     <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="10">
-        
+        <input pInputText type="text" name="descricao"
+          [(ngModel)]="lancamento.descricao"
+          #descricao="ngModel" required minlength="5">
+
         <app-message [control]="descricao" error="required"
           text="Informe uma descrição."></app-message>
 
         <app-message [control]="descricao" error="minlength"
           text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres."></app-message>
-        
+
     </div>
     <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Valor</label>
-        <input pInputText type="text" name="valor" ngModel #valor="ngModel" required
-          currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }"
-          placeholder="0,00">
+        <input pInputText type="text" name="valor" placeholder="0,00"
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          [(ngModel)]="lancamento.valor" #valor="ngModel"
+          required>
 
         <app-message [control]="valor" error="required"
           text="Informe um valor."></app-message>
@@ -42,8 +51,10 @@
 
     <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias" placeholder="Selecione" name="categoria" ngModel #pessoa="ngModel"
-          [autoWidth]="false"></p-dropdown>
+        <p-dropdown name="categoria" [options]="categorias"
+          placeholder="Selecione" [autoWidth]="false"
+          [(ngModel)]="lancamento.categoria.codigo" #categoria="ngModel"
+          required></p-dropdown>
 
         <app-message [control]="categoria" error="required"
           text="Informe uma categoria."></app-message>
@@ -51,16 +62,19 @@
 
     <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Pessoas</label>
-        <p-dropdown [options]="pessoas" placeholder="Selecione" name="pessoa" ngModel #categoria="ngModel"
-          [autoWidth]="false" filter="true"></p-dropdown>
+        <p-dropdown name="pessoa" [options]="pessoas" placeholder="Selecione"
+        [autoWidth]="false" [filter]="true"
+        [(ngModel)]="lancamento.pessoa.codigo" #pessoa="ngModel"
+        required></p-dropdown>
 
         <app-message [control]="pessoa" error="required"
           text="Informe uma pessoa."></app-message>
-    </div>    
-    
+    </div>
+
     <div class="ui-g-12 ui-fluid">
         <label>Observação</label>
-        <textarea rows="3" pInputTextarea></textarea>
+        <textarea pInputTextarea rows="3" name="observacao"
+        [(ngModel)]="lancamento.observacao"></textarea>
     </div>
 
     <div class="ui-g-12">
