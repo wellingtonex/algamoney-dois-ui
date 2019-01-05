@@ -16,6 +16,7 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { SharedModule } from 'app/shared/shared.module';
+import { CategoriasModule } from 'app/categorias/categorias.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SharedModule } from 'app/shared/shared.module';
     CurrencyMaskModule,
     CalendarModule,
 
-    SharedModule
+    SharedModule,
+    CategoriasModule
   ],
   declarations: [
     LancamentoCadastroComponent,

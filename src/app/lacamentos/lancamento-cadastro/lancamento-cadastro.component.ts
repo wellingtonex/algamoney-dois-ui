@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriaService } from 'app/categorias/categoria.service';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -23,9 +24,11 @@ export class LancamentoCadastroComponent implements OnInit {
     { label: 'Maria Abadia', value: 3 },
   ];
 
-  constructor() { }
+  constructor(private categoriaService: CategoriaService) { }
 
   ngOnInit() {
+    this.categoriaService.listarTodas()
+      .then(categorias => console.log(categorias));
   }
 
 }
