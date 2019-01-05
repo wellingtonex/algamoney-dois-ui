@@ -17,6 +17,7 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { CategoriasModule } from 'app/categorias/categorias.module';
+import { PessoasModule } from 'app/pessoas/pessoas.module';
 
 
 @NgModule({

@@ -16,6 +16,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { SharedModule } from 'app/shared/shared.module';
+import { PessoaService } from './pessoa.service';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { SharedModule } from 'app/shared/shared.module';
     TooltipModule,
     InputTextareaModule,
     SelectButtonModule,
-    DropdownModule,    
+    DropdownModule,
     InputMaskModule
   ],
   declarations: [
@@ -41,6 +42,7 @@ import { SharedModule } from 'app/shared/shared.module';
   exports: [
     PessoasPesquisaComponent,
     PessoasCadastroComponent
-  ]
+  ],
+  providers: [PessoaService]
 })
 export class PessoasModule { }
