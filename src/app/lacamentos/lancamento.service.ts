@@ -42,7 +42,7 @@ export class LancamentoService {
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, {headers, params})
      .toPromise()
-     .then(response => response.json());            
+     .then(response => response.json());
   }
 
   excluir(codigo: number): Promise<void> {
@@ -52,5 +52,5 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, {headers})
       .toPromise()
       .then(() => null);
-  }   
+  }
 }
