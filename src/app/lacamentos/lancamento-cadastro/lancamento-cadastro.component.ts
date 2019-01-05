@@ -4,6 +4,8 @@ import { ErrorHandlerService } from 'app/core/error-handler.service';
 import { PessoaService } from 'app/pessoas/pessoa.service';
 import { Lancamento } from 'app/core/model';
 import { FormControl } from '@angular/forms';
+import { LancamentoService } from '../lancamento.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -23,6 +25,8 @@ export class LancamentoCadastroComponent implements OnInit {
 
 
   constructor(
+    private lancamentoService: LancamentoService,
+    private toasyService: ToastyService,
     private categoriaService: CategoriaService,
     private pessoaService: PessoaService,
     private errorHandlerService: ErrorHandlerService) { }
@@ -44,8 +48,13 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch(error => this.errorHandlerService.handle(error));
   }
 
-  salvar(formControl: FormControl) {
-    console.log(this.lancamento);
+  salvar(form: FormControl) {
+    this.lancamentoService.salvar(this.lancamento)
+      .then(lancamento => {
+        this.toasyService.success(`Lancamento salvo com sucesso com o codigo: ${lancamento.codigo}`);
+        form.reset();
+        this.lancamento = new Lancamento();
+      }).catch(error => this.errorHandlerService.handle(error));
 
   }
 }
