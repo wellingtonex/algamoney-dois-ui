@@ -5,10 +5,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-import { LacamentosModule } from './lacamentos/lacamentos.module';
-import { PessoasModule } from './pessoas/pessoas.module';
-import { LancamentoService } from './lacamentos/lancamento.service';
+
 import { ToastyModule } from 'ng2-toasty';
+import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+
+import { LacamentosModule } from './lacamentos/lacamentos.module';
+import { LancamentoService } from './lacamentos/lancamento.service';
+import { PessoasModule } from './pessoas/pessoas.module';
+import { ConfirmationService } from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,16 @@ import { ToastyModule } from 'ng2-toasty';
     CoreModule,
     HttpModule,
 
+    ConfirmDialogModule,
     ToastyModule.forRoot(),
 
     LacamentosModule,
     PessoasModule
   ],
-  providers: [LancamentoService],
+  providers: [
+    LancamentoService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
