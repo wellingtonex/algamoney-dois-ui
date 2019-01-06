@@ -39,10 +39,7 @@ import { PessoaService } from './pessoa.service';
     PessoasPesquisaComponent,
     PessoasCadastroComponent
   ],
-  exports: [
-    PessoasPesquisaComponent,
-    PessoasCadastroComponent
-  ],
+  exports: [],
   providers: [PessoaService]
 })
 export class PessoasModule { }
