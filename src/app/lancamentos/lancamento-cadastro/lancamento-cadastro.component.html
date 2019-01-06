@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" (ngSubmit)="salvar(f)">
+  <form autocomplete="off" #f="ngForm" (ngSubmit)="salvar(f)">
     <div class="ui-g">
       <h1>{{editando ? 'Edição de' : 'Novo '}} Lancamento</h1>
     </div>
@@ -7,7 +7,9 @@
     <div class="ui-g-12">
         <p-selectButton name="tipo" [options]="tipos"
         [(ngModel)]="lancamento.tipo"
-        #tipo></p-selectButton>
+        #tipo="ngModel"></p-selectButton>
+        <app-message [control]="tipo" error="required"
+        text="Informe um tipo."></app-message>
     </div>
 
     <div class="ui-g-6 ui-md-3 ui-fluid">
@@ -79,7 +81,7 @@
 
     <div class="ui-g-12">
       <button type="submit" label="Salvar" pButton></button>
-      <a label="Novo" class="ui-button-info" pButton></a>
+      <a label="Novo" class="ui-button-info" pButton type="button" (click)="novo(f)"></a>
       <a [routerLink]="[ '/lancamentos']">Voltar para pesquisa</a>
     </div>
 

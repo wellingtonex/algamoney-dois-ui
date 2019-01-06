@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CategoriaService } from 'app/categorias/categoria.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
@@ -17,8 +17,8 @@ import { ToastyService } from 'ng2-toasty';
 export class LancamentoCadastroComponent implements OnInit {
 
   tipos = [
-    {label: 'Receita', value: 'RECEITA'},
-    {label: 'Despesa', value: 'DESPESA'},
+    { label: 'Receita', value: 'RECEITA' },
+    { label: 'Despesa', value: 'DESPESA' },
   ];
 
   categorias = [];
@@ -32,7 +32,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private categoriaService: CategoriaService,
     private pessoaService: PessoaService,
     private errorHandlerService: ErrorHandlerService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -79,8 +80,9 @@ export class LancamentoCadastroComponent implements OnInit {
     this.lancamentoService.salvar(this.lancamento)
       .then(lancamento => {
         this.toasyService.success(`Lancamento salvo com sucesso com o codigo: ${lancamento.codigo}`);
-        form.reset();
-        this.lancamento = new Lancamento();
+        //form.reset();
+        //this.lancamento = new Lancamento();
+        this.router.navigate(['/lancamentos', lancamento.codigo]);
       }).catch(error => this.errorHandlerService.handle(error));
 
   }
@@ -91,5 +93,15 @@ export class LancamentoCadastroComponent implements OnInit {
         this.lancamento = lancamento;
         this.toasyService.success(`Lancamento alterado com sucesso com o codigo: ${lancamento.codigo}`);
       }).catch(error => this.errorHandlerService.handle(error));
+  }
+
+  novo(form: FormControl) {
+    form.reset();
+
+    setTimeout(function() {
+      this.lancamento = new Lancamento();
+    }.bind(this), 1);
+
+    this.router.navigate(['/lancamentos/novo']);
   }
 }
