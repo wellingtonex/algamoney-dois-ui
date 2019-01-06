@@ -85,7 +85,7 @@ export class LancamentoService {
   buscarPorCodigo(codigo: number): Promise<Lancamento> {
     const headers = new Headers();
     headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    return this.http.get(`this.lancamentosUrl/${codigo}`, {headers})
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`, {headers})
       .toPromise()
       .then(response => {
         const lancamento = response.json() as Lancamento;

@@ -36,11 +36,23 @@ export class LancamentoCadastroComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.route.snapshot.params.codigo);
-
+    const codigoLancamento = this.route.snapshot.params.codigo;
+    this.carregarLancamento(codigoLancamento);
 
     this.carregarCategorias();
     this.carregarPessoas();
+  }
+
+  carregarLancamento(codigo: number) {
+    if(codigo) {
+      this.lancamentoService.buscarPorCodigo(codigo)
+        .then(lancamento => this.lancamento = lancamento)
+        .catch(error => this.errorHandlerService.handle(error));
+    }
+  }
+
+  get editando(): Boolean {
+    return Boolean(this.lancamento.codigo)
   }
 
   carregarCategorias() {
