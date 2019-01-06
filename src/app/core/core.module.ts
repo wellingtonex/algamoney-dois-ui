@@ -14,6 +14,7 @@ import { CategoriaService } from './../categorias/categoria.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LancamentoService } from 'app/lancamentos/lancamento.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AuthService } from 'app/seguranca/auth.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     CategoriaService,
     ErrorHandlerService,
     Title,
-
+    AuthService,
     ConfirmationService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
