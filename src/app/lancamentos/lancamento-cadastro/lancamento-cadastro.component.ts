@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { CategoriaService } from 'app/categorias/categoria.service';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
@@ -33,10 +34,12 @@ export class LancamentoCadastroComponent implements OnInit {
     private pessoaService: PessoaService,
     private errorHandlerService: ErrorHandlerService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private title: Title
+    ) { }
 
   ngOnInit() {
-
+    this.title.setTitle('Novo lançamento');
     const codigoLancamento = this.route.snapshot.params.codigo;
     this.carregarLancamento(codigoLancamento);
 
@@ -47,7 +50,10 @@ export class LancamentoCadastroComponent implements OnInit {
   carregarLancamento(codigo: number) {
     if(codigo) {
       this.lancamentoService.buscarPorCodigo(codigo)
-        .then(lancamento => this.lancamento = lancamento)
+        .then(lancamento => {
+          this.lancamento = lancamento
+          this.atualizarTituloEdicao();
+        })
         .catch(error => this.errorHandlerService.handle(error));
     }
   }
@@ -92,6 +98,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .then(lancamento => {
         this.lancamento = lancamento;
         this.toasyService.success(`Lancamento alterado com sucesso com o codigo: ${lancamento.codigo}`);
+        this.atualizarTituloEdicao();
       }).catch(error => this.errorHandlerService.handle(error));
   }
 
@@ -103,5 +110,9 @@ export class LancamentoCadastroComponent implements OnInit {
     }.bind(this), 1);
 
     this.router.navigate(['/lancamentos/novo']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição de lançamento: ${this.lancamento.descricao}`);
   }
 }
