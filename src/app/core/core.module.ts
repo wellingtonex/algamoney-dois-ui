@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { ConfirmationService } from 'primeng/components/common/api';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
 import { ToastyModule } from 'ng2-toasty';
+import { JwtHelper } from 'angular2-jwt';
 
 import { ErrorHandlerService } from './error-handler.service';
 import { PessoaService } from './../pessoas/pessoa.service';
@@ -39,6 +40,7 @@ import { AuthService } from 'app/seguranca/auth.service';
     Title,
     AuthService,
     ConfirmationService,
+    JwtHelper,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
