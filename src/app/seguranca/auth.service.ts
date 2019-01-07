@@ -28,7 +28,6 @@ export class AuthService {
     return this.http.post(this.oauthTokenUrl, body, { headers })
       .toPromise()
       .then(response => {
-        console.log(response);
         this.armazenarToken(response.json().access_token);
       }).catch(error => {
         if(error.status === 400) {
@@ -43,6 +42,7 @@ export class AuthService {
 
   private armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
+    console.log(this.jwtPayload);
     localStorage.setItem('token', token);
   }
 
@@ -53,4 +53,33 @@ export class AuthService {
       this.armazenarToken(token);
     }
   }
+
+  temPermissao(permissao: String) : boolean{
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
+  temPermissaoDePesquisarPessoa() : boolean{
+    return this.temPermissao('ROLE_PESQUISAR_PESSOA');
+  }
+
+  temPermissaoDeRemoverPessoa() : boolean{
+    return this.temPermissao('ROLE_REMOVER_PESSOA');
+  }
+
+  temPermissaoDeCadastrarPessoa() : boolean{
+    return this.temPermissao('ROLE_CADASTRAR_PESSOA');
+  }
+
+  temPermissaoDePesquisarLancamento() : boolean{
+    return this.temPermissao('ROLE_PESQUISAR_LANCAMENTO');
+  }
+
+  temPermissaoDeRemoverLancamento() : boolean{
+    return this.temPermissao('ROLE_REMOVER_LANCAMENTO');
+  }
+
+  temPermissaoDeCadastrarLancamento() : boolean{
+    return this.temPermissao('ROLE_CADASTRAR_LANCAMENTO');
+  }
+
 }
