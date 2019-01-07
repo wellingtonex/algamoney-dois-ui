@@ -31,15 +31,19 @@ export class AuthService {
         console.log(response);
         this.armazenarToken(response.json().access_token);
       }).catch(error => {
-        console.log(error);
+        if(error.status === 400) {
+          const responseJson = error.json();
+          if(responseJson.error === 'invalid_grant') {
+            return Promise.reject('Usuário ou senha inválido.')
+          }
+        }
+        return Promise.reject(error);
       })
   }
 
   private armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
-    console.log(this.jwtPayload);
-
   }
 
   private carregarToken() {
