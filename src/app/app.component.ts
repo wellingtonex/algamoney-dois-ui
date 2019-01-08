@@ -16,7 +16,9 @@ export class AppComponent {
   }
 
   exibindoNavbar() {
-    return this.router.url !== '/login';
+    const eDiferenteDeLogin = this.router.url !== '/login'
+      && this.router.url !== '/';
+    return eDiferenteDeLogin;
   }
 
 }
