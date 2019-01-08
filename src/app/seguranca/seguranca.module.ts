@@ -10,6 +10,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { AppRoutingModule } from './seguranca-router.module';
 import { MoneyHttp } from './money-http';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
   const config = new AuthConfig({
@@ -35,7 +36,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [AuthService, Http, RequestOptions]
-    }
+    },
+    AuthGuard
   ]
 })
 export class SegurancaModule { }
