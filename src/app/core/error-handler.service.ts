@@ -13,12 +13,13 @@ export class ErrorHandlerService {
       msg = errorResponse;
     }
      else {
-      if( errorResponse instanceof Response) {
-        errorResponse = errorResponse.json();
-      }
 
-      msg = 'Erro ao processar serviço remoto. Tente novamente.'
-      console.log('Ocorreu um erro', errorResponse);
+      if (errorResponse.status === 403) {
+        msg = 'Você não tem permissão para executar esta ação';
+      } else {
+        msg = 'Erro ao processar serviço remoto. Tente novamente.'
+        console.log('Ocorreu um erro', errorResponse);
+      }
     }
     this.toastyService.error(msg);
   }

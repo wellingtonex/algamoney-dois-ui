@@ -4,6 +4,7 @@ import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/ap
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'app/seguranca/auth.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -22,7 +23,8 @@ export class LancamentosPesquisaComponent implements OnInit {
     private toastyService: ToastyService,
     private confirmation: ConfirmationService,
     private errorHandleService: ErrorHandlerService,
-    private title: Title
+    private title: Title,
+    public auth: AuthService
     ) { }
 
   ngOnInit() {

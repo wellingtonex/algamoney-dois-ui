@@ -53,7 +53,7 @@
             <ng-template let-lanc="rowData" pTemplate="body">
               <a pButton [routerLink]="['/lancamentos', lanc.codigo]" icon="fa-pencil" pTooltip="Editar" tooltipPosition="bottom"></a>
               <button pButton icon="fa-trash" pTooltip="Excluir" type="button" tooltipPosition="bottom"
-                (click)="confirmarExclusao(lanc)"></button>
+                (click)="confirmarExclusao(lanc)" [disabled]="!auth.temPermissaoDeRemoverLancamento()"></button>
             </ng-template>
           </p-column>
         </p-dataTable>
