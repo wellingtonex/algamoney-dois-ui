@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { JwtHelper } from 'angular2-jwt';
-import { log } from 'util';
 
 
 @Injectable()
@@ -25,7 +24,7 @@ export class AuthService {
 
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl, body, { headers })
+    return this.http.post(this.oauthTokenUrl, body, { headers,  withCredentials: true })
       .toPromise()
       .then(response => {
         this.armazenarToken(response.json().access_token);
@@ -52,6 +51,24 @@ export class AuthService {
     if (token) {
       this.armazenarToken(token);
     }
+  }
+
+  obterNovoAccessToken(): Promise<void> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+
+    const body = `grant_type=refresh_token`;
+    return this.http.post(this.oauthTokenUrl, body, { headers,  withCredentials: true })
+      .toPromise()
+      .then(response => {
+        console.log('Novo access token criado');
+        this.armazenarToken(response.json().access_token);
+        Promise.resolve(null);
+      }).catch(error => {
+        console.log('Erro ao renovar token.', error);
+        Promise.resolve(null);
+      })
   }
 
   temPermissao(permissao: String) : boolean{
