@@ -16,6 +16,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { PessoaService } from './pessoa.service';
+import { PessoaRoutingModule } from './pessoa.routing.module';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { PessoaService } from './pessoa.service';
     InputTextareaModule,
     SelectButtonModule,
     DropdownModule,
-    InputMaskModule
+    InputMaskModule,
+    PessoaRoutingModule
   ],
   declarations: [
     PessoasPesquisaComponent,

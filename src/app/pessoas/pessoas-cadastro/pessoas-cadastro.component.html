@@ -5,7 +5,7 @@
     </div>
     <div class="ui-g-12 ui-fluid">
       <label>Nome</label>
-      <input type="text" pInputText name="nome" 
+      <input type="text" pInputText name="nome"
         ngModel #nome="ngModel" required minlength="3">
       <app-message [control]="nome" error="required"
           text="Informe seu nome."></app-message>
@@ -16,7 +16,7 @@
     </div>
     <div class="ui-g-12 ui-md-9 ui-fluid">
       <label>Logadouro</label>
-      <input type="text" pInputText name="logradouro" 
+      <input type="text" pInputText name="logradouro"
         ngModel #logradouro="ngModel" required>
 
       <app-message [control]="logradouro" error="required"
@@ -75,7 +75,7 @@
     <div class="ui-g-12">
       <button type="submit" label="Salvar" pButton></button>
       <a label="novo" class="ui-button-info" pButton></a>
-      <a href="javascript:;">Voltar para pesquisa</a>
+      <a  [routerLink]="[ '/pessoas' ]">Voltar para pesquisa</a>
     </div>
   </form>
 </div>
