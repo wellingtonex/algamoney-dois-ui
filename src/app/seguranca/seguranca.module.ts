@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { InputTextModule, ButtonModule } from 'primeng/primeng';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Http, RequestOptions } from '@angular/http';

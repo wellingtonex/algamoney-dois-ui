@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoService, LacamentoFiltro } from '../lancamento.service';
-import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/api';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
