@@ -14,10 +14,16 @@
 
     <div class="ui-g-6 ui-md-3 ui-fluid">
       <label>Vencimento</label>
-      <p-calendar name="vencimento" dateFormat="dd/mm/yy"
-      [inline]="false" [readonlyInput]="false" [showIcon]="false"
-      formControlName="dataVencimento">
-    </p-calendar>
+
+      <p-calendar name="dataVencimento"
+            [readonlyInput]="true" [monthNavigator]="true"
+            [yearNavigator]="true" [yearRange]="'1930:2080'"
+            [dateFormat]="'dd/mm/yy'"
+            [showIcon]="true"
+            formControlName="dataVencimento"
+            [locale]="configuracaoData">
+      </p-calendar>
+
 
       <app-message [control]="formulario.get('dataVencimento')" error="required"
           text="Informe um vencimento."></app-message>
@@ -25,7 +31,7 @@
     <div class="ui-g-6 ui-md-3 ui-fluid">
       <label>{{formulario.get('tipo').value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
       <p-calendar dateFormat="dd/mm/yy" name="dataPagamento"
-      formControlName="dataPagamento"></p-calendar>
+      formControlName="dataPagamento" ></p-calendar>
     </div>
     <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
@@ -54,8 +60,8 @@
           placeholder="Selecione" [autoWidth]="false" formControlName="codigo">
         </p-dropdown>
 
-        <!-- <app-message [control]="categoria" error="required"
-          text="Informe uma categoria."></app-message> -->
+        <app-message [control]="formulario.get('categoria.codigo')" error="required"
+          text="Informe uma categoria."></app-message>
     </div>
 
     <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="pessoa">
@@ -65,8 +71,8 @@
           formControlName="codigo">
         </p-dropdown>
 
-        <!-- <app-message [control]="pessoa" error="required"
-          text="Informe uma pessoa."></app-message> -->
+        <app-message [control]="formulario.get('pessoa.codigo')" error="required"
+          text="Informe uma pessoa."></app-message>
     </div>
 
     <div class="ui-g-12 ui-fluid">
@@ -76,7 +82,7 @@
     </div>
 
     <div class="ui-g-12">
-      <button type="submit" label="Salvar" pButton></button>
+      <button type="submit" [disabled]="formulario.invalid" label="Salvar" pButton></button>
       <a label="Novo" class="ui-button-info" pButton type="button" (click)="novo()"></a>
       <a [routerLink]="[ '/lancamentos']">Voltar para pesquisa</a>
     </div>

@@ -9,6 +9,7 @@ import { Lancamento } from 'app/core/model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LancamentoService } from '../lancamento.service';
 import { ToastyService } from 'ng2-toasty';
+import { Utils } from 'app/shared/Utils';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -25,6 +26,9 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   pessoas = [];
   formulario: FormGroup;
+  yearRange: string = (new Date().getFullYear() - 100) + ':' + (new Date().getFullYear());
+  maxDate = new Date();
+  configuracaoData = Utils.configuracaoData;;
 
   constructor(
     private lancamentoService: LancamentoService,
