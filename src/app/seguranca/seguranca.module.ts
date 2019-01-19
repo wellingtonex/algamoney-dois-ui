@@ -1,19 +1,18 @@
-import { NgModule } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { Http, RequestOptions } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
-import { LoginFormComponent } from './login-form/login-form.component';
-import { AppRoutingModule } from './seguranca-router.module';
-import { MoneyHttp } from './money-http';
-import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { LogoutService } from './logout.service';
-
+import { AuthService } from './auth.service';
+import { MoneyHttp } from './money-http';
+import { SegurancaRoutingModule } from './seguranca-routing.module';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
   const config = new AuthConfig({
@@ -21,7 +20,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
       { 'Content-Type': 'application/json' }
     ]
   });
-  return new MoneyHttp(auth, config, http, options)
+
+  return new MoneyHttp(auth, config, http, options);
 }
 
 @NgModule({
@@ -31,7 +31,8 @@ export function authHttpServiceFactory(auth: AuthService, http: Http, options: R
 
     InputTextModule,
     ButtonModule,
-    AppRoutingModule
+
+    SegurancaRoutingModule
   ],
   declarations: [LoginFormComponent],
   providers: [

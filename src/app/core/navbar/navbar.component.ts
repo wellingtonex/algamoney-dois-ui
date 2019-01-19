@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from 'app/seguranca/auth.service';
-import { LogoutService } from 'app/seguranca/logout.service';
-import { ErrorHandlerService } from '../error-handler.service';
+import { LogoutService } from './../../seguranca/logout.service';
+import { ErrorHandlerService } from './../error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,15 +12,18 @@ import { ErrorHandlerService } from '../error-handler.service';
 })
 export class NavbarComponent implements OnInit {
 
+  exibindoMenu = false;
+
   constructor(
     public auth: AuthService,
-    public logoutService: LogoutService,
-    public router: Router,
-    public errorHandler: ErrorHandlerService
+    private logoutService: LogoutService,
+    private errorHandler: ErrorHandlerService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
+
   logout() {
     this.logoutService.logout()
       .then(() => {
@@ -28,4 +31,5 @@ export class NavbarComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
 }

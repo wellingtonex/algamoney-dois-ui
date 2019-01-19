@@ -1,46 +1,36 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
 
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
-import {DataTableModule} from 'primeng/datatable';
-import {TooltipModule} from 'primeng/tooltip';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputMaskModule} from 'primeng/inputmask';
+import { InputMaskModule } from 'primeng/inputmask';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { TooltipModule } from 'primeng/tooltip';
 
+import { SharedModule } from './../shared/shared.module';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { PessoasCadastroComponent } from './pessoas-cadastro/pessoas-cadastro.component';
-import { SharedModule } from 'app/shared/shared.module';
-import { PessoaService } from './pessoa.service';
-import { PessoaRoutingModule } from './pessoa.routing.module';
+import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import { PessoasRoutingModule } from './pessoas-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     FormsModule,
-
-    SharedModule,
 
     InputTextModule,
     ButtonModule,
-    DataTableModule,
+    TableModule,
     TooltipModule,
-    InputTextareaModule,
-    SelectButtonModule,
-    DropdownModule,
     InputMaskModule,
-    PessoaRoutingModule
+
+    SharedModule,
+    PessoasRoutingModule
   ],
   declarations: [
-    PessoasPesquisaComponent,
-    PessoasCadastroComponent
+    PessoaCadastroComponent,
+    PessoasPesquisaComponent
   ],
-  exports: [],
-  providers: [PessoaService]
+  exports: []
 })
 export class PessoasModule { }
